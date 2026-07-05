@@ -1,76 +1,91 @@
-# 🧠 Deep Learning Intelligence System
+# 🧠 MLP Keras - Classificação de Câncer (WDBC)
 
 ## 📌 Visão Geral
 
-Este projeto tem como objetivo construir um sistema completo de **Deep Learning aplicado a dados estruturados**, utilizando TensorFlow e Keras, com comparação contra modelos clássicos de Machine Learning.
+Este projeto utiliza uma **Rede Neural Artificial (MLP - Multilayer Perceptron)** com a API do Keras para realizar a classificação de tumores de mama como **benignos ou malignos**, com base em características extraídas de células.
 
-Neste momento, o repositório representa apenas a **base inicial de estruturação do projeto**, ainda sem implementação de modelos ou pipelines.
-
----
-
-## 🎯 Objetivo do Projeto
-
-Explorar e desenvolver um fluxo completo de Machine Learning e Deep Learning para dados estruturados, incluindo:
-
-- Pré-processamento de dados
-- Modelos clássicos de Machine Learning
-- Redes neurais com TensorFlow/Keras
-- Comparação de performance entre abordagens
-- Estruturação de um pipeline profissional
+O objetivo é aplicar conceitos fundamentais de redes neurais em um problema real de classificação binária na área da saúde.
 
 ---
 
-## 🏗️ Status Atual
+## 🎯 Objetivo
 
-🔧 Projeto em fase inicial
+Desenvolver um modelo de Deep Learning capaz de:
 
-Atualmente contém apenas:
-
-- Estrutura de pastas base
-- Configuração de ambiente virtual
-- Arquivo de dependências (`requirements.txt`)
-- Arquivo `.gitignore`
-- Preparação do ambiente de desenvolvimento
+- Classificar tumores como benignos (0) ou malignos (1)
+- Aprender padrões não lineares em dados tabulares
+- Avaliar desempenho utilizando métricas de classificação
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📊 Dataset
 
-data/
-src/
-notebooks/
-models/
-reports/
+**WDBC - Wisconsin Diagnostic Breast Cancer**
 
----
-
-## ⚙️ Tecnologias Utilizadas
-
-- Python 3.x
-- Pandas
-- NumPy
-- Scikit-learn
-- TensorFlow / Keras
-- Matplotlib / Seaborn
+- Tipo: Classificação binária
+- Classes:
+  - M → Maligno (1)
+  - B → Benigno (0)
+- Features: 30 variáveis numéricas derivadas de imagens de células mamárias
 
 ---
 
-## 🚧 Próximos Passos
+## 🧠 Conceitos Aplicados
 
-- Exploração e análise de dados (EDA)
-- Construção de baseline com modelos clássicos
-- Implementação de redes neurais (Keras)
-- Comparação de resultados
-- Estruturação de pipeline em `src/`
+### 🔹 Neurônio Artificial
+Unidade básica que realiza combinações lineares e aplicação de função de ativação.
+
+### 🔹 Perceptron
+Modelo inicial de rede neural para separação linear.
+
+### 🔹 MLP (Multilayer Perceptron)
+Rede neural com múltiplas camadas capazes de aprender relações não lineares.
+
+### 🔹 Funções de Ativação
+- ReLU nas camadas ocultas
+- Sigmoid na camada de saída
+
+### 🔹 Função de Perda
+- binary_crossentropy (classificação binária)
+
+### 🔹 Otimizador
+- Adam (otimização adaptativa dos pesos)
 
 ---
 
-## 📌 Observação
+## ⚙️ Pipeline do Projeto
 
-Este projeto será desenvolvido de forma incremental, simulando um ambiente real de produção em Machine Learning.
+1. Carregamento do dataset
+2. Separação entre features (X) e target (y)
+3. Conversão do target para valores numéricos
+4. Normalização dos dados (StandardScaler)
+5. Divisão treino/teste
+6. Construção do modelo MLP
+7. Compilação do modelo
+8. Treinamento da rede
+9. Avaliação do modelo
+10. Predição e validação final
 
 ---
 
-## 👨‍💻 Autor
+## 🧱 Arquitetura do Modelo
 
-Projeto em desenvolvimento como parte de portfólio de Data Science / Machine Learning.
+```python
+Dense(16, activation='relu')
+Dense(8, activation='relu')
+Dense(1, activation='sigmoid')
+
+## 📈 Avaliação do Modelo
+
+### 📊 Matriz de Confusão
+
+```text
+[[72  0]
+ [ 2 40]]
+
+## 📌 Métricas
+
+- Accuracy: ~98%
+- Precision: alta
+- Recall: alto para classe positiva
+- Boa capacidade de generalização
